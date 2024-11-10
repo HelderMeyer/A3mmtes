@@ -15,7 +15,7 @@ jobs:
     - name: Checar código
       uses: actions/checkout@v4
 
-    - name: Conventional Commit Checker
+    - name: Verificador de Conventional Commits para eventos de Pull Request
       if: github.event_name == 'pull_request'
       uses: agenthunt/conventional-commit-checker-action@v2.0.0
       with:
@@ -24,7 +24,7 @@ jobs:
     
     
 
-    - name: Conventional Commit Checker for Push Events
+    - name: Verificador de Conventional Commits para eventos de Push
       if: github.event_name == 'push'
       run: |
         # Checks the latest commit message for conventional format
@@ -33,7 +33,7 @@ jobs:
         # Define a regex for conventional commits
         regex="^(feat|fix|docs|style|refactor|perf|test|chore)(\(.+\))?: .+$"
         if [[ ! $last_commit_message =~ $regex ]]; then
-          echo "Commit message does not follow Conventional Commits format."
+          echo "A mensagem de commit não segue o padrão de Conventional Commits. (Commit message does not follow Conventional Commits format)"
           exit 1
         fi
 
