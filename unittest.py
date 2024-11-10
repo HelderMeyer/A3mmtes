@@ -1,5 +1,5 @@
 def mensagem():
-    return "FUNCIONOU!"
+    return "a"
 
 
 if __name__ == "__main__":
